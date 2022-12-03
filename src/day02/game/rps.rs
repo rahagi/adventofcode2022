@@ -4,13 +4,13 @@ const WIN: i32 = 6;
 const LOSE: i32 = 0;
 const DRAW: i32 = 3;
 
-pub struct RPS {
+pub struct Rps {
     player: Shape,
     opponent: Shape,
     pub player_points_gained: i32,
 }
 
-impl RPS {
+impl Rps {
     pub fn new(player: Shape, opponent: Shape) -> Self {
         Self {
             player,

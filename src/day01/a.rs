@@ -3,7 +3,7 @@ use crate::utils;
 pub fn a(input_file: &str) -> i32 {
     let input = utils::file::file_to_str(input_file);
     let mut max = 0;
-    for foods in input.split("\n\n").into_iter() {
+    for foods in input.split("\n\n") {
         let sum = foods.lines().map(|x| x.parse::<i32>().unwrap()).sum();
         if sum > max {
             max = sum;

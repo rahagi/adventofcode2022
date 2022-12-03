@@ -1,7 +1,7 @@
 use crate::utils;
 use std::str::FromStr;
 
-use super::game::{rps::RPS, shape::Shape};
+use super::game::{rps::Rps, shape::Shape};
 
 pub fn a(input_file: &str) -> i32 {
     let input = utils::file::file_to_str(input_file);
@@ -12,7 +12,7 @@ pub fn a(input_file: &str) -> i32 {
             let opponent = Shape::from_str(rps.next().unwrap()).unwrap();
             let player = Shape::from_str(rps.next().unwrap()).unwrap();
 
-            let mut game = RPS::new(player, opponent);
+            let mut game = Rps::new(player, opponent);
             game.start();
             game.player_points_gained
         })
