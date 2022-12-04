@@ -25,14 +25,8 @@ impl Range {
     }
 
     pub fn does_fully_overlap(&self, other: &Range) -> bool {
-        let size_one = self.max - self.min;
-        let size_two = other.max - other.min;
-
-        if size_one > size_two {
-            self.min <= other.min && self.max >= other.max
-        } else {
-            other.min <= self.min && other.max >= self.max
-        }
+        self.min <= other.min && self.max >= other.max
+            || other.min <= self.min && other.max >= self.max
     }
 
     pub fn does_overlap(&self, other: &Range) -> bool {
