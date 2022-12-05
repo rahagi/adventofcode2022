@@ -1,3 +1,7 @@
 /target
 /Cargo.lock
 session
+
+# too big
+src/day04/input_big.txt
+
