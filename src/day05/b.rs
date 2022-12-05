@@ -8,14 +8,17 @@ pub fn b(input_file: &str) -> String {
 
     instructions.iter().for_each(|ins| {
         let mut src = stacks.get(&ins.src).unwrap().borrow_mut();
-        src.drain(..ins.len).rev().for_each(|c| {
-            stacks.get(&ins.dst).unwrap().borrow_mut().insert(0, c);
-        });
+        let len = src.len();
+
+        let mut to_move = src.split_off(len - ins.len);
+
+        let mut dst = stacks.get(&ins.dst).unwrap().borrow_mut();
+        dst.append(&mut to_move);
     });
 
     stacks
         .iter()
-        .map(|(_, v)| *v.borrow().first().unwrap())
+        .map(|(_, v)| *v.borrow().last().unwrap())
         .collect::<String>()
 }
 

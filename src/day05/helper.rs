@@ -21,7 +21,7 @@ pub fn parse_stacks(input: &str) -> BTreeMap<usize, RefCell<Vec<char>>> {
                 .for_each(|(i, r_crate)| {
                     if let Some(c) = r_crate.get(1).copied() {
                         if c != ' ' {
-                            stacks.entry(i).or_default().borrow_mut().push(c);
+                            stacks.entry(i).or_default().borrow_mut().insert(0, c);
                         }
                     }
                 })
