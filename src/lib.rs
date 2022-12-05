@@ -30,7 +30,7 @@ pub fn big_boi_runner(day_num: &str) {
             "2" => run(day02::a::a, day02::b::b, &path),
             "3" => run(day03::a::a, day03::b::b, &path),
             "4" => run(day04::a::a, day04::b::b, &path),
-            // "5" => run(day05::a::a, day05::b::b, &path),
+            "5" => run(day05::a::a, day05::b::b, &path),
             // "6" => run(day06::a::a, day06::b::b, &path),
             // "7" => run(day07::a::a, day07::b::b, &path),
             // would probably get filtered at this point xd
