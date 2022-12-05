@@ -1,6 +1,5 @@
 use std::{cell::RefCell, collections::BTreeMap};
 
-#[derive(Debug)]
 pub struct Move {
     pub src: usize,
     pub dst: usize,
@@ -64,6 +63,6 @@ mod tests {
     #[test]
     fn test_parse_moves() {
         let input = utils::file::file_to_str("src/day05/input_example.txt");
-        println!("{:?}", parse_moves(&input));
+        assert_eq!(parse_moves(&input).len(), 4);
     }
 }
