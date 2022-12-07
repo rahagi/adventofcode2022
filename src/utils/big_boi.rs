@@ -1,4 +1,4 @@
-use crate::{day01, day02, day03, day04, day05};
+use crate::{day01, day02, day03, day04, day05, day06, day07};
 
 type Runner<T> = fn(&str) -> T;
 
@@ -44,6 +44,16 @@ pub fn run(day_num: &str, part: &str) {
             "5" => match part {
                 "1" => run_solver(day05::a::a, &input_file),
                 "2" => run_solver(day05::b::b, &input_file),
+                _ => err_part(),
+            },
+            "6" => match part {
+                "1" => run_solver(day06::a::a, &input_file),
+                "2" => run_solver(day06::b::b, &input_file),
+                _ => err_part(),
+            },
+            "7" => match part {
+                "1" => run_solver(day07::a::a, &input_file),
+                "2" => run_solver(day07::b::b, &input_file),
                 _ => err_part(),
             },
             _ => unreachable!(),
