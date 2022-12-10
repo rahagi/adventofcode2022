@@ -1,9 +1,8 @@
 use super::helper::{rmove::Move, rope::Rope};
 use crate::utils;
 
-pub fn a(input_file: &str) -> usize {
+pub fn b(input_file: &str) -> usize {
     let input = utils::file::file_to_str(input_file);
-    // change `KNOT_LENGTH` constant to `1` to get answer for part one
     let mut rope = Rope::new();
 
     input.lines().for_each(|ins| {
@@ -18,10 +17,11 @@ pub fn a(input_file: &str) -> usize {
 
 #[cfg(test)]
 mod tests {
-    use super::a;
+    use super::b;
     #[test]
-    fn test_09_a() {
-        assert_eq!(a("src/day09/input_example.txt"), 13);
-        println!("Answer: {}", a("src/day09/input.txt"));
+    fn test_09_b() {
+        assert_eq!(b("src/day09/input_example.txt"), 1);
+        assert_eq!(b("src/day09/input_example_big.txt"), 36);
+        println!("Answer: {}", b("src/day09/input.txt"));
     }
 }
