@@ -1,6 +1,5 @@
 use std::str::FromStr;
 
-#[derive(Debug)]
 pub enum Instruction {
     Add(isize),
     Noop,
@@ -21,7 +20,6 @@ impl FromStr for Instruction {
     }
 }
 
-#[derive(Debug)]
 pub struct Cpu {
     instructions: Vec<Instruction>,
     buffer: Vec<isize>,
@@ -49,9 +47,9 @@ impl Cpu {
             .collect();
     }
 
-    pub fn next_cycle(&mut self) {
+    pub fn next_cycle(&mut self) -> bool {
         if self.instructions.is_empty() {
-            return;
+            return false;
         }
 
         self.cycle += 1;
@@ -71,6 +69,7 @@ impl Cpu {
                 self.consume_instructions();
             }
         }
+        true
     }
 
     fn consume_instructions(&mut self) {
