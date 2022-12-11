@@ -1,14 +1,12 @@
 use std::str::FromStr;
 
-#[derive(Debug)]
+pub type Id = usize;
+
 pub enum Operation {
     Multiply(Option<usize>),
     Add(Option<usize>),
 }
 
-pub type Id = usize;
-
-#[derive(Debug)]
 pub struct Monkey {
     pub operation: Operation,
     pub stack: Vec<usize>,
@@ -75,6 +73,7 @@ impl FromStr for Monkey {
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         let mut monkey = Monkey::new();
         let mut lines = s.lines().skip(1);
+
         let stack = lines.next().unwrap();
         let operation = lines.next().unwrap();
         let test = lines.next().unwrap();

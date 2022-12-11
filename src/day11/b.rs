@@ -1,6 +1,6 @@
-use std::{collections::BTreeMap, cell::RefCell, str::FromStr};
-use super::monkey::{Monkey, Operation, Id};
+use super::monkey::{Id, Monkey, Operation};
 use crate::utils;
+use std::{cell::RefCell, collections::BTreeMap, str::FromStr};
 
 const ROUND_REQUIRED: usize = 10000;
 
@@ -8,16 +8,16 @@ pub fn b(input_file: &str) -> usize {
     let input = utils::file::file_to_str(input_file);
 
     let mut monkeys: BTreeMap<Id, RefCell<Monkey>> = BTreeMap::new();
-    input
-        .split("\n\n")
-        .enumerate()
-        .for_each(|(id, monkey)| {
-            let monkey = Monkey::from_str(monkey).unwrap();
-            monkeys.insert(id, RefCell::new(monkey));
-        });
+    input.split("\n\n").enumerate().for_each(|(id, monkey)| {
+        let monkey = Monkey::from_str(monkey).unwrap();
+        monkeys.insert(id, RefCell::new(monkey));
+    });
     let mut inspect_count = vec![0; monkeys.len()];
     // thanks fizzbuzz
-    let magic_number: usize = monkeys.values().map(|monkey| monkey.borrow().test).product();
+    let magic_number: usize = monkeys
+        .values()
+        .map(|monkey| monkey.borrow().test)
+        .product();
 
     let mut round = 1;
     while round <= ROUND_REQUIRED {
@@ -39,7 +39,12 @@ pub fn b(input_file: &str) -> usize {
                     monkey.next_if_false
                 };
 
-                monkeys.get(&next_id).unwrap().borrow_mut().stack.push(item_value);
+                monkeys
+                    .get(&next_id)
+                    .unwrap()
+                    .borrow_mut()
+                    .stack
+                    .push(item_value);
                 inspect_count[*id] += 1;
             }
         });
